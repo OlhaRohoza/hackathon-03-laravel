@@ -62,11 +62,8 @@
                 name="age"
                 value="{{ old('age', $animal->age) }}"
             >
-<<<<<<< HEAD
             <br>
             <br>
-=======
->>>>>>> new-feat-1
             <label>Weight:</label>
             <input
                 type="text"
