@@ -25,7 +25,8 @@ class OwnerController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('owners/create');
     }
 
     /**
@@ -36,7 +37,16 @@ class OwnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $owner = new Owner;
+
+        $owner->first_name = $request->input('first_name');
+        $owner->surname = $request->input('surname');
+        $owner->email = $request->input('email');
+        $owner->phone = $request->input('phone');
+        $owner->address = $request->input('address');
+        $owner->save();
+        session()->flash('success_message', 'New owner registered.');
+        return redirect(url('/owners/detail/' . $owner->id));
     }
 
     /**

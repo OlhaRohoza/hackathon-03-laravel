@@ -24,7 +24,7 @@
 
     @if ($animal->id)
         {{-- <form action="/animals/{{ $animal->id }}" method="post"> --}}
-        <form action="{{ route('animals.update', ['animalId' => $animal->id])}}" method="post">
+        <form action="{{ route('animals.update', ['animalId' => $animal->id]) }}" method="post">
             @method('put')
     @else
         <form action="{{ route('animals.store') }}" method="post">
@@ -75,5 +75,7 @@
         <button>Send</button>
 
     </form>
+    <br>
+     <a href="http://www.hackathon3.test/index"><button>Back to main</button></a>
 </body>
 </html>

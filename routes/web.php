@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/owners/create', function () {
+    return view('owners/create');
+});
+
 // view index route
 Route::get('/index', ['App\Http\Controllers\IndexController', 'index_list']);
 
@@ -28,6 +32,7 @@ Route::post('/owners/search', [OwnerController::class, 'search'])->name('owner.s
 
 Route::get('/animals/detail/{animalId}', ['App\Http\Controllers\AnimalController', 'show'])->whereNumber('animalId')->name('animals.detail');
 Route::get('/owners/detail/{ownerId}', ['App\Http\Controllers\OwnerController', 'show'])->whereNumber('ownerId')->name('owners.detail');
+Route::post('/owners/create', ['App\Http\Controllers\OwnerController', 'store'])->name('owners.create');
 
 Route::get('/animals/create/{ownerId}', ['App\Http\Controllers\AnimalController', 'create'])->name('animals.create');
 Route::post('/animals/{ownerId}', ['App\Http\Controllers\AnimalController', 'store'])->name('animals.store');

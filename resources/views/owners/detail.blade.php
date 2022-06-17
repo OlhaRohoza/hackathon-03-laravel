@@ -7,6 +7,7 @@
     <title>Owner Info</title>
 </head>
 <body>
+      <a href="http://www.hackathon3.test/index"><button>Back to main</button></a>
     <h1>{{$owner->first_name .' '. $owner->surname}}</h1>
 
 

@@ -8,6 +8,8 @@
     <title>Animal Info</title>
 </head>
 <body>
+     <a href="http://www.hackathon3.test/index"><button>Back to main</button></a>
+     
     @include('common/message')
 
     <h1>{{$animal->name}}</h1>
@@ -46,6 +48,18 @@
         </div>
     </div>
 
-    
+    <div class="animal__info">
+        <h1>{{$animal->name}}</h1>
+        <h4>{{$animal->species}} : {{$animal->breed}}</h4>
+        <p>Age: {{$animal->age}}</p>
+        <p>Weight: {{$animal->weight}}</p>
+
+        <?php foreach ($animal_owners as $owner) : ?>
+            <li> <a href="{{ route('owners.detail', $owner->id)}}">{{$owner->first_name . ' ' . $owner->surname}} </a>
+            </li>
+        <?php endforeach; ?>
+
+    </div>
+    </div>     
 </body>
 </html>
