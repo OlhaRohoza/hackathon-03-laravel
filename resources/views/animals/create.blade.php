@@ -27,6 +27,8 @@
                 name="name"
                 value="{{ old('name', $animal->name) }}"
             >
+            <br>
+            <br>
 
             <label>Species:</label>
             <input
@@ -34,25 +36,32 @@
                 name="species"
                 value="{{ old('species', $animal->species) }}"
             >
+            <br>
+            <br>
             <label>Breed:</label>
             <input
                 type="text"
                 name="breed"
                 value="{{ old('breed', $animal->breed) }}"
             >
+            <br>
+            <br>
             <label>Age:</label>
             <input
                 type="text"
                 name="age"
                 value="{{ old('age', $animal->age) }}"
             >
+            <br>
+            <br>
             <label>Age:</label>
             <input
                 type="text"
                 name="weight"
                 value="{{ old('weight', $animal->weight) }}"
             >
-
+        <br>
+        <br>
         <button>Send</button>
 
     </form>
