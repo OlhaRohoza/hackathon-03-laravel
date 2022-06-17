@@ -18,6 +18,4 @@ Route::get('/', function () {
 });
 
 // view index route
-Route::get('/index', function () {
-    return view('index');
-});
+Route::get('/index', ['App\Http\Controllers\IndexController', 'index_list']);
