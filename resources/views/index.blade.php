@@ -30,11 +30,20 @@
 
     <h2>Here will go clickable list of owners:</h2>
         <ul>    
-            @foreach ($owners as $owner)            
+            @foreach ($owners as $key => $owner)            
                 <li> 
-                    {{-- to add correct route for detail href!!! --}}
-                    <a href="/">
-                        {{$owner->surname}}, {{$owner->first_name}}</a>
+                    {{-- to add correct route for detail href!!! --}}                         
+                   
+                    <b>Owner:  <a href="#"> </b> {{$owner->first_name}} {{$owner->surname}} 
+                    </a>
+                    <br>
+                   
+                    <b>Pet name: </b> <a href="#"> {{$animals_name[$key]}}
+                    
+                    <br>                        
+                    <img src="/images/pets/{{ $animals_img[$key]}}" width="200" alt="">
+                    </a>
+                    <br>
                 </li>
             @endforeach
         </ul>
