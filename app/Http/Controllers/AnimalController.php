@@ -105,8 +105,9 @@ class AnimalController extends Controller
     }
 
 
-    public function search($search_word)
+    public function search(Request $request)
     {
+        $search_word = $request->input('animal_name');
         $animals = Animal::where('name', 'like', "%" . $search_word . "%")->get();
         // dd($animals);
         return view('animals/search', compact('animals', 'search_word'));

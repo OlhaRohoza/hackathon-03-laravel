@@ -19,7 +19,7 @@
     <p>Weight: {{$animal->weight}}</p>
 
     <?php foreach ($animal_owners as $owner) : ?>
-        <li> {{$owner->first_name . ' ' . $owner->surname}}
+        <li><a href="{{ route('owners.detail', $owner->id)}}"> {{$owner->first_name . ' ' . $owner->surname}}</a>
         </li>
     <?php endforeach; ?>
 

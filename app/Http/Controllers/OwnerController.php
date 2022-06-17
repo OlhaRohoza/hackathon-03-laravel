@@ -96,8 +96,9 @@ class OwnerController extends Controller
         //
     }
 
-    public function search($search_word)
+    public function search(Request $request)
     {
+        $search_word = $request->input('surname');
         $owners = Owner::where('surname', 'like', "%" . $search_word . "%")->get();
         // dd($owners);
         return view('owners/search', compact('owners', 'search_word'));

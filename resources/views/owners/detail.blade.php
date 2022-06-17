@@ -15,7 +15,7 @@
     
     <ul>
     @foreach ($animals as $animal) 
-        <li> {{$animal->name. ' - ' . $animal->species. ' breed: ' . $animal->breed}}       </li>
+        <li> <a href="{{ route('animals.detail', $animal->id)}}">{{$animal->name. ' - ' . $animal->species. ' breed: ' . $animal->breed}} </a> </li>
     @endforeach
     </ul>
 
