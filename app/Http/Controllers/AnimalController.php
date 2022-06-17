@@ -103,4 +103,12 @@ class AnimalController extends Controller
     {
         //
     }
+
+
+    public function search($search_word)
+    {
+        $animals = Animal::where('name', 'like', "%" . $search_word . "%")->get();
+        // dd($animals);
+        return view('animals/search', compact('animals', 'search_word'));
+    }
 }
