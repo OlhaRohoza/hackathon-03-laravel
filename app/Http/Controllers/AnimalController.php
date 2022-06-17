@@ -26,10 +26,21 @@ class AnimalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($ownerId)
     {
+
+        $owner = Owner::findOrFail($ownerId);
         // prepare empty object
         $animal = new Animal;
+
+
+
+        $animal->owner_id = $ownerId;
+
+
+        $animal->save();
+
+        //dd($animal);
 
         // display the form view, passing in the movie
         return view('animals.create', compact('animal'));
@@ -68,6 +79,7 @@ class AnimalController extends Controller
     public function show($id)
     {
         $animal = Animal::findOrFail($id);
+        //dd($animal);
         $animal_image = DB::selectOne(
             "SELECT images.path 
             FROM images
@@ -75,6 +87,7 @@ class AnimalController extends Controller
             WHERE animals.id = ?",
             [$id]
         );
+        //dd($animal_image);
 
         // dd($animal_image);
         $animal_owners = DB::select(

@@ -9,14 +9,16 @@
 </head>
 <body>
     <h1>{{$animal->name}}</h1>
-
+{{-- @dd($animal) --}}
      <a href="{{route('animals.edit', ['animalId' => $animal->id])}}" >
             <button class="edit"><span class="edit_img"></span><p>Edit an animal</p></button>
         </a>
     <div class="animal_img_container">
         {{-- images/pinky.jpg --}}
+        @if($animal_image)
         <img src="{{'/images/pets/' . $animal_image->path}}" alt="animal image">
         {{-- <img src="images/pinky.jpg" alt="animal image"> --}}
+        @endif
     </div>
 
     <div class="animal__info">
@@ -24,12 +26,12 @@
         <h4>{{$animal->species}} : {{$animal->breed}}</h4>
         <p>Age: {{$animal->age}}</p>
         <p>Weight: {{$animal->weight}}</p>
-
-        <?php foreach ($animal_owners as $owner) : ?>
+        @if($animal_owners)
+        @foreach ($animal_owners as $owner)
             <li> <a href="{{ route('owners.detail', $owner->id)}}">{{$owner->first_name . ' ' . $owner->surname}} </a>
             </li>
-        <?php endforeach; ?>
-
+        @endforeach;
+        @endif
     </div>
     </div>
 

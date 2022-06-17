@@ -46,7 +46,7 @@
                 name="age"
                 value="{{ old('age', $animal->age) }}"
             >
-            <label>Age:</label>
+            <label>Weight:</label>
             <input
                 type="text"
                 name="weight"
