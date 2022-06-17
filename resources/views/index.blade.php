@@ -1,3 +1,4 @@
+@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +39,11 @@
                 <li> 
                     {{-- to add correct route for detail href!!! --}}                         
                    
-                    <b>Owner:  <a href="http://www.hackathon3.test/owners/detail/{{$owner->id}}"> 
-                    </b> {{$owner->first_name}} {{$owner->surname}} </a>
-                     <b>Pet name: </b> <a href="/animals/detail/{{ $animals_id[$key] }}"> {{$animals_name[$key]}}
+                    Owner:  <a href="http://www.hackathon3.test/owners/detail/{{$owner->id}}"> 
+                    {{$owner->first_name}} {{$owner->surname}} </a>
+                     <br>
+                        Pet name: </b> <a href="/animals/detail/{{ $animals_id[$key] }}"> {{$animals_name[$key]}}
+                    
                     <br>
                     <br>                    
                     <img src="/images/pets/{{ $animals_img[$key] }}" width="200" alt="">
