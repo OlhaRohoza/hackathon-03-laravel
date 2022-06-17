@@ -1,6 +1,9 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +22,5 @@ Route::get('/', function () {
 
 // view index route
 Route::get('/index', ['App\Http\Controllers\IndexController', 'index_list']);
+
+Route::get('/animals/search/{animal_name}', [AnimalController::class, 'search']);

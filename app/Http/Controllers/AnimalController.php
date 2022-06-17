@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Animal;
 
 class AnimalController extends Controller
 {
@@ -80,5 +81,13 @@ class AnimalController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function search($search_word)
+    {
+        $animals = Animal::where('name', 'like', "%" . $search_word . "%")->get();
+        // dd($animals);
+        return view('animals/search', compact('animals', 'search_word'));
     }
 }
