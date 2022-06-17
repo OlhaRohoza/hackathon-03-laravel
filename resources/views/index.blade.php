@@ -11,11 +11,11 @@
 
     <h2>Search for an owner or a pet</h2>
     {{-- have to add route for action!!! --}}
-    <form action="" method="get">
+    <form action="{{route('animal.search', 'animal_name')}}" method="get">
          @csrf
-        <label for='owner_name'> Search for an owner</label>
+        <label for='owner_surname'> Search for an owner</label>
         <br>
-        <input type="text" name="owner_name" value="">
+        <input type="text" name="owner_surname">
         <button>Search</button>     
     </form>
   <br>
@@ -24,7 +24,7 @@
          @csrf
         <label for='pet_name'> Search for a pet</label>
         <br>
-        <input type="text" name="owner_name" value="">
+        <input type="text" name="name">
         <button>Search</button>     
     </form>
 

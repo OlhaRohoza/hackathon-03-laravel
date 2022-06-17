@@ -21,4 +21,5 @@ Route::get('/', function () {
 });
 
 
-Route::get('/animals/search/{animal_name}', [AnimalController::class, 'search']);
+Route::get('/animals/search/{animal_name}', [AnimalController::class, 'search'])->name('animal.search');
+Route::get('/owners/search/{owner_name}', [OwnerController::class, 'search'])->name('owner.search');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Owner;
 
 class OwnerController extends Controller
 {
@@ -80,5 +81,12 @@ class OwnerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search($search_word)
+    {
+        $owners = Owner::where('surname', 'like', "%" . $search_word . "%")->get();
+        // dd($owners);
+        return view('owners/search', compact('owners', 'search_word'));
     }
 }
