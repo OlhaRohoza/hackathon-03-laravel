@@ -8,6 +8,8 @@
     <title>Animal Info</title>
 </head>
 <body>
+     <a href="http://www.hackathon3.test/index"><button>Back to main</button></a>
+     
     <h1>{{$animal->name}}</h1>
 
      <a href="{{route('animals.edit', ['animalId' => $animal->id])}}" >
@@ -31,9 +33,6 @@
         <?php endforeach; ?>
 
     </div>
-    </div>
-
-
-    
+    </div>     
 </body>
 </html>

@@ -11,11 +11,11 @@ class IndexController extends Controller
 {
     public function index_list()
     {
-        $owners = Owner::orderBy('surname')
+        $owners = Owner::orderBy('id')
             ->limit(20)
             ->get();
 
-        $animals = Animal::orderBy('name')
+        $animals = Animal::orderBy('id')
             ->limit(20)
             ->get();
 

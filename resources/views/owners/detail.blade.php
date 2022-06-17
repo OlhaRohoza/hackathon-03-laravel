@@ -7,6 +7,7 @@
     <title>Owner Info</title>
 </head>
 <body>
+      <a href="http://www.hackathon3.test/index"><button>Back to main</button></a>
     <h1>{{$owner->first_name .' '. $owner->surname}}</h1>
 
 
@@ -16,10 +17,11 @@
     
     <ul>
     @foreach ($animals as $animal) 
-        <li> <a href="{{ route('animals.detail', $animal->id)}}">{{$animal->name. ' - ' . $animal->species. ' breed: ' . $animal->breed}} </a> </li>
-    @endforeach
-    </ul>
-
+        @if (isset($animal->id))
+            <li> <a href="{{ route('animals.detail', $animal->id)}}">{{$animal->name. ' - ' . $animal->species. ' breed: ' . $animal->breed}} </a> </li>
+        @endif
+        @endforeach
+    </ul>   
     
 </body>
 </html>

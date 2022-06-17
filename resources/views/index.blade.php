@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Welcome to our vetclinic!</h1>
+    <a href="http://www.hackathon3.test/owners/create"> <button>Add new client</button></a>
 
     <h2>Search for an owner or a pet</h2>
  
