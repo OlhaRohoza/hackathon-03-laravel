@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css">
     <title>Animal Info</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
      <a href="http://www.hackathon3.test/index"><button>Back to main</button></a>
@@ -15,11 +16,13 @@
     <h1>{{$animal->name}}</h1>
 
     <div class="animal__container">
+        @if($animal_image->path)
         <div class="animal__img">
             {{-- images/pinky.jpg --}}
             <img src="{{'/images/pets/' . $animal_image->path}}" alt="animal image">
             {{-- <img src="images/pinky.jpg" alt="animal image"> --}}
         </div>
+        @endif
 
         <div class="animal__info">
             <h4>{{$animal->species}} : {{$animal->breed}}</h4>
