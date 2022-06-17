@@ -33,11 +33,18 @@
 
     <h2>Here will go clickable list of owners:</h2>
         <ul>    
-            @foreach ($owners as $owner)            
+            @foreach ($owners as $key => $owner)            
                 <li> 
-                    {{-- to add correct route for detail href!!! --}}
-                    <a href="/">
-                        {{$owner->surname}}, {{$owner->first_name}}</a>
+                    {{-- to add correct route for detail href!!! --}}                         
+                   
+                    <b>Owner:  <a href="http://www.hackathon3.test/owners/detail/{{$owner->id}}"> </b> {{$owner->first_name}} {{$owner->surname}} </a>
+                     <b>Pet name: </b> <a href="/animals/detail/{{ $animals_id[$key] }}"> {{$animals_name[$key]}}
+                    <br>
+                    <br>                    
+                    <img src="/images/pets/{{ $animals_img[$key] }}" width="200" alt="">
+                    </a>
+                    <br>
+                    <br>   
                 </li>
             @endforeach
         </ul>
