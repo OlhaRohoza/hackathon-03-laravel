@@ -39,14 +39,14 @@
                 <li> 
                     {{-- to add correct route for detail href!!! --}}                         
                    
-                    <b>Owner:  <a href="#"> </b> {{$owner->first_name}} {{$owner->surname}} 
+                    <b>Owner:  <a href="http://www.hackathon3.test/owners/detail/{{$owner->id}}"> </b> {{$owner->first_name}} {{$owner->surname}} 
                     </a>
                     <br>
                    
-                    <b>Pet name: </b> <a href="#"> {{$animals_name[$key]}}
+                    <b>Pet name: </b> <a href="/animals/detail/{{ $animals_id[$key] }}"> {{$animals_name[$key]}}
                     
                     <br>                        
-                    <img src="/images/pets/{{ $animals_img[$key]}}" width="200" alt="">
+                    <img src="/images/pets/{{ $animals_img[$key] }}" width="200" alt="">
                     </a>
                     <br>
                 </li>
