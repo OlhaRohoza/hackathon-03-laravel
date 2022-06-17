@@ -1,6 +1,9 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +22,4 @@ Route::get('/', function () {
 
 
 Route::get('/animals/{animalId}/detail', ['App\Http\Controllers\AnimalController', 'show'])->whereNumber('animalId')->name('animals.detail');
+Route::get('/animals/search/{animal_name}', [AnimalController::class, 'search']);
