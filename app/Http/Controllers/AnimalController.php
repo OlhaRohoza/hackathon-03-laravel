@@ -52,7 +52,7 @@ class AnimalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $ownerId)
     {
         $animal = new Animal;
 
@@ -61,6 +61,7 @@ class AnimalController extends Controller
         $animal->breed = $request->input('breed');
         $animal->age = $request->input('age');
         $animal->weight = $request->input('weight');
+        $animal->owner_id = $ownerId;
 
 
         $animal->save();
