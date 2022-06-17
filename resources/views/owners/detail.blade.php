@@ -20,6 +20,12 @@
     @endforeach
     </ul>
 
+ 
+    <form action="{{ route('animals.create', $owner->id)}}" method="post">
+        @csrf
+        <button type='submit' class="edit">Add a pet</button>
+    </form>
+
     
 </body>
 </html>
