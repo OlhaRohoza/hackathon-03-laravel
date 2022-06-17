@@ -12,7 +12,7 @@
 
     <h2>Search for an owner or a pet</h2>
  
-    <form action="{{route('owner.search', 'surname')}}" method="get">
+    <form action="{{route('owner.search', 'surname')}}" method="post">
         @csrf
 
         <label for='owner_surname'> Search for an owner</label>
@@ -38,7 +38,8 @@
                 <li> 
                     {{-- to add correct route for detail href!!! --}}                         
                    
-                    <b>Owner:  <a href="http://www.hackathon3.test/owners/detail/{{$owner->id}}"> </b> {{$owner->first_name}} {{$owner->surname}} </a>
+                    <b>Owner:  <a href="http://www.hackathon3.test/owners/detail/{{$owner->id}}"> 
+                    </b> {{$owner->first_name}} {{$owner->surname}} </a>
                      <b>Pet name: </b> <a href="/animals/detail/{{ $animals_id[$key] }}"> {{$animals_name[$key]}}
                     <br>
                     <br>                    
