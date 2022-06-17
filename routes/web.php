@@ -33,3 +33,6 @@ Route::get('/animals/create', ['App\Http\Controllers\AnimalController', 'create'
 Route::post('/animals', ['App\Http\Controllers\AnimalController', 'store'])->name('animals.store');
 Route::get('/animals/{animalId}/edit', ['App\Http\Controllers\AnimalController', 'edit'])->name('animals.edit');
 Route::put('/animals/{animalId}', ['App\Http\Controllers\AnimalController', 'update'])->name('animals.update');
+
+
+Route::delete('/animals/detail/{id}', [AnimalController::class, 'destroy'])->name('animals.delete');

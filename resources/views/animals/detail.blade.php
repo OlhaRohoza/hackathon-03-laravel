@@ -31,7 +31,17 @@
             <br>
             <a href="{{route('animals.edit', ['animalId' => $animal->id])}}" >
                 <button class="edit">Edit an animal</button>
-        </a>
+            </a>
+
+            <br>
+            <br>
+
+            <form action="{{route('animals.delete', $animal->id)}}" method="post">
+                @csrf
+                @method('delete')
+
+                <button>DELETE the pet</button>
+            </form>
 
         </div>
     </div>

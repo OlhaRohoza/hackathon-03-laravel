@@ -149,7 +149,13 @@ class AnimalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $animal = Animal::findOrFail($id);
+        $owner = Owner::findOrFail($animal->owner_id);
+
+        $animal->delete();
+        session()->flash('success_deleting', 'A PET was DELETED.');
+
+        return redirect(url('/owners/detail/' . $owner->id));
     }
 
 
