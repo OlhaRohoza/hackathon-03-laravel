@@ -13,7 +13,6 @@
  
     <form action="{{route('owner.search', 'surname')}}" method="get">
         @csrf
-        @method('get')
 
         <label for='owner_surname'> Search for an owner</label>
         <br>
@@ -23,9 +22,8 @@
     </form>
   <br>
      {{-- have to add route for action!!! --}}
-    <form action="{{route('animal.search', 'animal_name')}}" method="get">
+    <form action="{{route('animal.search')}}" method="post">
         @csrf
-        @method('get')
 
         <label for='pet_name'> Search for a pet</label>
         <br>
