@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Animal;
 use App\Models\Owner;
 use App\Models\Image;
@@ -47,7 +46,6 @@ class IndexController extends Controller
                 'animals_id' => $animals_id,
                 'animals_img' => $animals_img
             ]
-
         );
     }
 }

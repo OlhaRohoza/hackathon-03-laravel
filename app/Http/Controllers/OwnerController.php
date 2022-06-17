@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Owner;
-use App\Models\Animal;
-use DB;
 
 class OwnerController extends Controller
 {
@@ -46,6 +44,7 @@ class OwnerController extends Controller
         $owner->phone = $request->input('phone');
         $owner->address = $request->input('address');
         $owner->save();
+
         session()->flash('success_message', 'New owner registered.');
         return redirect(url('/owners/detail/' . $owner->id));
     }
@@ -59,19 +58,8 @@ class OwnerController extends Controller
     public function show($id)
     {
         $owner = Owner::findOrFail($id);
+        $animals = $owner->animals;
 
-        // dd($animal_image);
-        // $animals = DB::select(
-        //     "SELECT *
-        //     FROM owners
-        //     JOIN animals ON owners.id = animals.owner_id
-        //     WHERE owners.id = ?",
-        //     [$id]
-        // );
-
-        $animals = Animal::where('owner_id', '=', $id)->get();
-
-        // dd($animals);
         return view('owners.detail', compact('owner', 'animals'));
     }
 
@@ -114,7 +102,7 @@ class OwnerController extends Controller
         $search_word = $request->input('surname');
 
         $owners = Owner::where('surname', 'like', "%" . $search_word . "%")->get();
-        // dd($owners);
+
         return view('owners/search', compact('owners', 'search_word'));
     }
 }

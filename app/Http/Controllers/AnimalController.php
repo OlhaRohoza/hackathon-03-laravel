@@ -28,19 +28,10 @@ class AnimalController extends Controller
      */
     public function create($ownerId)
     {
-        // dd($ownerId);
         $owner = Owner::findOrFail($ownerId);
-        // prepare empty object
+
         $animal = new Animal;
-
-
-
         $animal->owner_id = $ownerId;
-
-
-        //$animal->save();
-
-        //dd($animal);
 
         // display the form view, passing in the movie
         return view('animals.create', compact('animal'));
@@ -63,7 +54,6 @@ class AnimalController extends Controller
         $animal->weight = $request->input('weight');
         $animal->owner_id = $ownerId;
 
-
         $animal->save();
 
         session()->flash('success_message', 'New animal registered.');
@@ -80,25 +70,12 @@ class AnimalController extends Controller
     public function show($id)
     {
         $animal = Animal::findOrFail($id);
-        //dd($animal);
-        $animal_image = DB::selectOne(
-            "SELECT images.path 
-            FROM images
-            LEFT JOIN animals ON images.id = animals.image_id
-            WHERE animals.id = ?",
-            [$id]
-        );
-        //dd($animal_image);
 
-        // dd($animal_image);
-        $animal_owners = DB::select(
-            "SELECT *
-            FROM animals
-            LEFT JOIN owners ON owners.id = animals.owner_id
-            WHERE animals.id = ?",
-            [$id]
-        );
-        return view('animals.detail', compact('animal', 'animal_image', 'animal_owners'));
+        $animal_image = Image::find($animal->image_id);
+
+        $owner = Owner::findOrFail($animal->owner_id);
+
+        return view('animals.detail', compact('animal', 'animal_image', 'owner'));
     }
 
     /**

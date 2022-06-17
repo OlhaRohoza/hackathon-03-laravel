@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <a href="http://www.hackathon3.test/index"><button>Back to main</button></a>
+    <a href="http://www.hackathon3.test/index"><button>Back to main</button></a>
      
     @include('common/message')
 
@@ -30,9 +30,7 @@
             <p>Age: {{$animal->age}}</p>
             <p>Weight: {{$animal->weight}}</p>
 
-            <?php foreach ($animal_owners as $owner) : ?>
-                <h4> Owner: <a href="{{ route('owners.detail', $owner->id)}}">{{$owner->first_name . ' ' . $owner->surname}} </a> </h4>
-            <?php endforeach; ?>
+            <h4> Owner: <a href="{{ route('owners.detail', $owner->id)}}">{{$owner->first_name . ' ' . $owner->surname}} </a> </h4>
 
             <br>
             <a href="{{route('animals.edit', ['animalId' => $animal->id])}}" >
