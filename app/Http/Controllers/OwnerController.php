@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Owner;
+use DB;
 
 class OwnerController extends Controller
 {
@@ -45,7 +47,19 @@ class OwnerController extends Controller
      */
     public function show($id)
     {
-        //
+        $owner = Owner::findOrFail($id);
+
+        // dd($animal_image);
+        $animals = DB::select(
+            "SELECT *
+            FROM owners
+            LEFT JOIN animals ON owners.id = animals.owner_id
+            WHERE owners.id = ?",
+            [$id]
+        );
+
+        // dd($animals);
+        return view('owners.detail', compact('owner', 'animals'));
     }
 
     /**
@@ -80,5 +94,13 @@ class OwnerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $search_word = $request->input('surname');
+        $owners = Owner::where('surname', 'like', "%" . $search_word . "%")->get();
+        // dd($owners);
+        return view('owners/search', compact('owners', 'search_word'));
     }
 }

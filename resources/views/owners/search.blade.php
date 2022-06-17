@@ -8,13 +8,13 @@
 </head>
 <body>
 
-    <h1>List of results for '{{$search_word}}'  consist of {{count($animals)}} lines </h1>
+    <h1>List of results for '{{$search_word}}' consist of {{count($owners)}} lines </h1>
 
-    <div class="result__animal">
+    <div class="result__owner">
 
         <ul>
-            @foreach ($animals as $animal)
-                <li> <a href="/animals/detail/{{$animal->id}}"> {{$animal->name}}</a></li> 
+            @foreach ($owners as $owner)
+                <li> <a href="/owners/detail/{{$owner->id}}"> {{$owner->first_name}} <strong>{{$owner->surname}} </strong> </a></li> 
             @endforeach
         </ul>
     </div>
