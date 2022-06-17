@@ -8,7 +8,10 @@
 </head>
 <body>
     <h1>{{$animal->name}}</h1>
-    
+
+     <a href="{{route('animals.edit', ['animalId' => $animal->id])}}" >
+            <button class="edit"><span class="edit_img"></span><p>Edit an animal</p></button>
+        </a>
     <div class="animal_img_container">
         {{-- images/pinky.jpg --}}
         <img src="{{'/images/pets/' . $animal_image->path}}" alt="animal image">
