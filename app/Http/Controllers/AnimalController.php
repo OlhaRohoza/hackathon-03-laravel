@@ -26,10 +26,21 @@ class AnimalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($ownerId)
     {
+
+        $owner = Owner::findOrFail($ownerId);
         // prepare empty object
         $animal = new Animal;
+
+
+
+        $animal->owner_id = $ownerId;
+
+
+        $animal->save();
+
+        //dd($animal);
 
         // display the form view, passing in the movie
         return view('animals.create', compact('animal'));
@@ -68,6 +79,7 @@ class AnimalController extends Controller
     public function show($id)
     {
         $animal = Animal::findOrFail($id);
+        //dd($animal);
         $animal_image = DB::selectOne(
             "SELECT images.path 
             FROM images
@@ -75,6 +87,7 @@ class AnimalController extends Controller
             WHERE animals.id = ?",
             [$id]
         );
+        //dd($animal_image);
 
         // dd($animal_image);
         $animal_owners = DB::select(
@@ -109,6 +122,20 @@ class AnimalController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'species' => 'required',
+            'breed' => 'required',
+            'age' => 'required',
+            'weight' => 'required',
+
+        ], [
+            'text.required' => 'Please be so kind and fill-in the NAME field',
+            'text.species' => "Please be so kind and fill-in the SPECIES field",
+            'text.breed' => "Please be so kind and fill-in the BREED field",
+            'text.age' => "Please be so kind and fill-in the AGE field",
+            'text.weight' => "Please be so kind and fill-in the WEIGHT field"
+        ]);
 
         $animal = Animal::findOrFail($id);
 
@@ -119,6 +146,8 @@ class AnimalController extends Controller
         $animal->weight = $request->input('weight');
 
         $animal->save();
+
+
 
         session()->flash('success_message', 'Pet was edited.');
 
@@ -133,7 +162,13 @@ class AnimalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $animal = Animal::findOrFail($id);
+        $owner = Owner::findOrFail($animal->owner_id);
+
+        $animal->delete();
+        session()->flash('success_deleting', 'A PET was DELETED.');
+
+        return redirect(url('/owners/detail/' . $owner->id));
     }
 
 

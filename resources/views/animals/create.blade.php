@@ -9,6 +9,16 @@
 </head>
 <body>
     {{-- @include('common/messages') --}}
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li style="color: red">{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
 
     <h1>{{ $animal->id ? 'Edit': 'Create' }} an animal</h1>
 
@@ -27,6 +37,8 @@
                 name="name"
                 value="{{ old('name', $animal->name) }}"
             >
+            <br>
+            <br>
 
             <label>Species:</label>
             <input
@@ -34,25 +46,35 @@
                 name="species"
                 value="{{ old('species', $animal->species) }}"
             >
+            <br>
+            <br>
             <label>Breed:</label>
             <input
                 type="text"
                 name="breed"
                 value="{{ old('breed', $animal->breed) }}"
             >
+            <br>
+            <br>
             <label>Age:</label>
             <input
                 type="text"
                 name="age"
                 value="{{ old('age', $animal->age) }}"
             >
-            <label>Age:</label>
+<<<<<<< HEAD
+            <br>
+            <br>
+=======
+>>>>>>> new-feat-1
+            <label>Weight:</label>
             <input
                 type="text"
                 name="weight"
                 value="{{ old('weight', $animal->weight) }}"
             >
-
+        <br>
+        <br>
         <button>Send</button>
 
     </form>

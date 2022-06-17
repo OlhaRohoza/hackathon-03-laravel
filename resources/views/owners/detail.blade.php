@@ -17,11 +17,16 @@
     
     <ul>
     @foreach ($animals as $animal) 
-        @if (isset($animal->id))
-            <li> <a href="{{ route('animals.detail', $animal->id)}}">{{$animal->name. ' - ' . $animal->species. ' breed: ' . $animal->breed}} </a> </li>
-        @endif
-        @endforeach
-    </ul>   
+        <li> <a href="{{ route('animals.detail', $animal->id)}}">{{$animal->name. ' - ' . $animal->species. ' breed: ' . $animal->breed}} </a> </li>
+    @endforeach
+    </ul>
+
+ 
+    <form action="{{ route('animals.create', $owner->id)}}" method="post">
+        @csrf
+        <button type='submit' class="edit">Add a pet</button>
+    </form>
+
     
 </body>
 </html>

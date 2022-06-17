@@ -34,7 +34,10 @@ Route::get('/animals/detail/{animalId}', ['App\Http\Controllers\AnimalController
 Route::get('/owners/detail/{ownerId}', ['App\Http\Controllers\OwnerController', 'show'])->whereNumber('ownerId')->name('owners.detail');
 Route::post('/owners/create', ['App\Http\Controllers\OwnerController', 'store'])->name('owners.create');
 
-Route::get('/animals/create', ['App\Http\Controllers\AnimalController', 'create'])->name('animals.create');
+Route::post('/animals/create/{ownerId}', ['App\Http\Controllers\AnimalController', 'create'])->name('animals.create');
 Route::post('/animals', ['App\Http\Controllers\AnimalController', 'store'])->name('animals.store');
 Route::get('/animals/{animalId}/edit', ['App\Http\Controllers\AnimalController', 'edit'])->name('animals.edit');
 Route::put('/animals/{animalId}', ['App\Http\Controllers\AnimalController', 'update'])->name('animals.update');
+
+
+Route::delete('/animals/detail/{id}', [AnimalController::class, 'destroy'])->name('animals.delete');
