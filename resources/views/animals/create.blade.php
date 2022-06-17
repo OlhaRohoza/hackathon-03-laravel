@@ -9,6 +9,16 @@
 </head>
 <body>
     {{-- @include('common/messages') --}}
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li style="color: red">{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
 
     <h1>{{ $animal->id ? 'Edit': 'Create' }} an animal</h1>
 
@@ -54,7 +64,7 @@
             >
             <br>
             <br>
-            <label>Age:</label>
+            <label>Weight:</label>
             <input
                 type="text"
                 name="weight"

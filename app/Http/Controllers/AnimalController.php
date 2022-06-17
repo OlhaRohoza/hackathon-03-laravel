@@ -109,6 +109,20 @@ class AnimalController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'species' => 'required',
+            'breed' => 'required',
+            'age' => 'required',
+            'weight' => 'required',
+
+        ], [
+            'text.required' => 'Please be so kind and fill-in the NAME field',
+            'text.species' => "Please be so kind and fill-in the SPECIES field",
+            'text.breed' => "Please be so kind and fill-in the BREED field",
+            'text.age' => "Please be so kind and fill-in the AGE field",
+            'text.weight' => "Please be so kind and fill-in the WEIGHT field"
+        ]);
 
         $animal = Animal::findOrFail($id);
 
@@ -119,6 +133,8 @@ class AnimalController extends Controller
         $animal->weight = $request->input('weight');
 
         $animal->save();
+
+
 
         session()->flash('success_message', 'Pet was edited.');
 
