@@ -28,7 +28,11 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        //
+        // prepare empty object
+        $animal = new Animal;
+
+        // display the form view, passing in the movie
+        return view('animals.create', compact('animal'));
     }
 
     /**
@@ -39,7 +43,20 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $animal = new Animal;
+
+        $animal->name = $request->input('name');
+        $animal->species = $request->input('species');
+        $animal->breed = $request->input('breed');
+        $animal->age = $request->input('age');
+        $animal->weight = $request->input('weight');
+
+
+        $animal->save();
+
+        session()->flash('success_message', 'New animal registered.');
+
+        return redirect(url('/animals/detail/' . $animal->id));
     }
 
     /**
@@ -78,7 +95,9 @@ class AnimalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $animal = Animal::findOrFail($id);
+
+        return view('animals.create', compact('animal'));
     }
 
     /**
@@ -90,7 +109,20 @@ class AnimalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $animal = Animal::findOrFail($id);
+
+        $animal->name = $request->input('name');
+        $animal->species = $request->input('species');
+        $animal->breed = $request->input('breed');
+        $animal->age = $request->input('age');
+        $animal->weight = $request->input('weight');
+
+        $animal->save();
+
+        session()->flash('success_message', 'Pet was edited.');
+
+        return redirect(url('/animals/detail/' . $animal->id));
     }
 
     /**
