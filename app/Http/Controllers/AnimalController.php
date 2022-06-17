@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\Models\Animal;
+use App\Models\Owner;
+use App\Models\Image;
+
 use Illuminate\Http\Request;
 
 class AnimalController extends Controller
@@ -45,7 +50,24 @@ class AnimalController extends Controller
      */
     public function show($id)
     {
-        //
+        $animal = Animal::findOrFail($id);
+        $animal_image = DB::selectOne(
+            "SELECT images.path 
+            FROM images
+            LEFT JOIN animals ON images.id = animals.image_id
+            WHERE animals.id = ?",
+            [$id]
+        );
+
+        // dd($animal_image);
+        $animal_owners = DB::select(
+            "SELECT *
+            FROM animals
+            LEFT JOIN owners ON owners.id = animals.owner_id
+            WHERE animals.id = ?",
+            [$id]
+        );
+        return view('animals.detail', compact('animal', 'animal_image', 'animal_owners'));
     }
 
     /**
