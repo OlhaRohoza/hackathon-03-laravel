@@ -28,7 +28,7 @@ class AnimalController extends Controller
      */
     public function create($ownerId)
     {
-
+        // dd($ownerId);
         $owner = Owner::findOrFail($ownerId);
         // prepare empty object
         $animal = new Animal;
@@ -38,7 +38,7 @@ class AnimalController extends Controller
         $animal->owner_id = $ownerId;
 
 
-        $animal->save();
+        //$animal->save();
 
         //dd($animal);
 

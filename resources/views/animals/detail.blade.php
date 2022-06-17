@@ -16,11 +16,12 @@
     <h1>{{$animal->name}}</h1>
 
     <div class="animal__container">
-        @if($animal_image->path)
+
+        @if(isset($animal_image->path))
         <div class="animal__img">
-            {{-- images/pinky.jpg --}}
+           
             <img src="{{'/images/pets/' . $animal_image->path}}" alt="animal image">
-            {{-- <img src="images/pinky.jpg" alt="animal image"> --}}
+            
         </div>
         @endif
 

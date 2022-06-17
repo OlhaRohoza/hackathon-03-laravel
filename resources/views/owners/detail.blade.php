@@ -15,15 +15,17 @@
     <p>Phone: {{$owner->phone}}</p>
     <p>Address: {{$owner->address}}</p>
     
+    @if(isset($animals))
     <ul>
+    
     @foreach ($animals as $animal) 
         <li> <a href="{{ route('animals.detail', $animal->id)}}">{{$animal->name. ' - ' . $animal->species. ' breed: ' . $animal->breed}} </a> </li>
     @endforeach
     </ul>
+    @endif
 
  
-    <form action="{{ route('animals.store', $owner->id)}}" method="post">
-        @csrf
+    <form action="{{ route('animals.create', $owner->id)}}" method="get">
         <button type='submit' class="edit">Add a pet</button>
     </form>
 

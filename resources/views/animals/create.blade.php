@@ -21,13 +21,11 @@
 
 
     <h1>{{ $animal->id ? 'Edit': 'Create' }} an animal</h1>
-
     @if ($animal->id)
-        {{-- <form action="/animals/{{ $animal->id }}" method="post"> --}}
         <form action="{{ route('animals.update', ['animalId' => $animal->id]) }}" method="post">
             @method('put')
     @else
-        <form action="{{ route('animals.store') }}" method="post">
+        <form action="{{ route('animals.store', $animal->owner_id) }}" method="post">
     @endif
         @csrf
 
