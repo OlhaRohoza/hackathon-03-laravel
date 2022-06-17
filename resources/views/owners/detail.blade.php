@@ -7,7 +7,8 @@
     <title>Owner Info</title>
 </head>
 <body>
-    <h1>{{$owner->first_name . $owner->surname}}</h1>
+    <h1>{{$owner->first_name .' '. $owner->surname}}</h1>
+
 
     <p>Email: {{$owner->email}}</p>
     <p>Phone: {{$owner->phone}}</p>
