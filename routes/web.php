@@ -24,5 +24,5 @@ Route::get('/', function () {
 Route::get('/index', ['App\Http\Controllers\IndexController', 'index_list']);
 
 Route::get('/animals/search/{animal_name}', [AnimalController::class, 'search'])->name('animal.search');
-Route::get('/owners/search/{owner_name}', [OwnerController::class, 'search'])->name('owner.search');
+Route::get('/owners/search/{surname}', [OwnerController::class, 'search'])->name('owner.search');
 Route::get('/animals/detail/{animalId}', ['App\Http\Controllers\AnimalController', 'show'])->whereNumber('animalId')->name('animals.detail');
