@@ -8,31 +8,33 @@
     <title>Animal Info</title>
 </head>
 <body>
+    @include('common/message')
+
     <h1>{{$animal->name}}</h1>
 
-     <a href="{{route('animals.edit', ['animalId' => $animal->id])}}" >
-            <button class="edit"><span class="edit_img"></span><p>Edit an animal</p></button>
+    <div class="animal__container">
+        <div class="animal__img">
+            {{-- images/pinky.jpg --}}
+            <img src="{{'/images/pets/' . $animal_image->path}}" alt="animal image">
+            {{-- <img src="images/pinky.jpg" alt="animal image"> --}}
+        </div>
+
+        <div class="animal__info">
+            <h4>{{$animal->species}} : {{$animal->breed}}</h4>
+            <p>Age: {{$animal->age}}</p>
+            <p>Weight: {{$animal->weight}}</p>
+
+            <?php foreach ($animal_owners as $owner) : ?>
+                <h4> Owner: <a href="{{ route('owners.detail', $owner->id)}}">{{$owner->first_name . ' ' . $owner->surname}} </a> </h4>
+            <?php endforeach; ?>
+
+            <br>
+            <a href="{{route('animals.edit', ['animalId' => $animal->id])}}" >
+                <button class="edit">Edit an animal</button>
         </a>
-    <div class="animal_img_container">
-        {{-- images/pinky.jpg --}}
-        <img src="{{'/images/pets/' . $animal_image->path}}" alt="animal image">
-        {{-- <img src="images/pinky.jpg" alt="animal image"> --}}
+
+        </div>
     </div>
-
-    <div class="animal__info">
-        <h1>{{$animal->name}}</h1>
-        <h4>{{$animal->species}} : {{$animal->breed}}</h4>
-        <p>Age: {{$animal->age}}</p>
-        <p>Weight: {{$animal->weight}}</p>
-
-        <?php foreach ($animal_owners as $owner) : ?>
-            <li> <a href="{{ route('owners.detail', $owner->id)}}">{{$owner->first_name . ' ' . $owner->surname}} </a>
-            </li>
-        <?php endforeach; ?>
-
-    </div>
-    </div>
-
 
     
 </body>
