@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Owner;
+use App\Models\Animal;
 use DB;
 
 class OwnerController extends Controller
@@ -60,13 +61,15 @@ class OwnerController extends Controller
         $owner = Owner::findOrFail($id);
 
         // dd($animal_image);
-        $animals = DB::select(
-            "SELECT *
-            FROM owners
-            LEFT JOIN animals ON owners.id = animals.owner_id
-            WHERE owners.id = ?",
-            [$id]
-        );
+        // $animals = DB::select(
+        //     "SELECT *
+        //     FROM owners
+        //     JOIN animals ON owners.id = animals.owner_id
+        //     WHERE owners.id = ?",
+        //     [$id]
+        // );
+
+        $animals = Animal::where('owner_id', '=', $id)->get();
 
         // dd($animals);
         return view('owners.detail', compact('owner', 'animals'));
