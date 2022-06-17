@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animal Info</title>
+</head>
+<body>
+    <h1>{{$animal->name}}</h1>
+    
+    <div class="animal_img_container">
+        {{-- images/pinky.jpg --}}
+        <img src="{{'/images/pets/' . $animal_image->path}}" alt="animal image">
+        {{-- <img src="images/pinky.jpg" alt="animal image"> --}}
+    </div>
+    <h4>{{$animal->species}} : {{$animal->breed}}</h4>
+    <p>Age: {{$animal->age}}</p>
+    <p>Weight: {{$animal->weight}}</p>
+
+    <?php foreach ($animal_owners as $owner) : ?>
+        <li> {{$owner->first_name . ' ' . $owner->surname}}
+        </li>
+    <?php endforeach; ?>
+
+
+    
+</body>
+</html>
