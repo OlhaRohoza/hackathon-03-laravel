@@ -28,8 +28,16 @@
         <button>Search</button>     
     </form>
 
-    <h2>Here will go clickable list of animals:</h2>
-
+    <h2>Here will go clickable list of owners:</h2>
+        <ul>    
+            @foreach ($owners as $owner)            
+                <li> 
+                    {{-- to add correct route for detail href!!! --}}
+                    <a href="/">
+                        {{$owner->surname}}, {{$owner->first_name}}</a>
+                </li>
+            @endforeach
+        </ul>
       
 </body>
 </html>

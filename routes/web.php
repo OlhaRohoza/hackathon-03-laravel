@@ -20,6 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// view index route
+Route::get('/index', ['App\Http\Controllers\IndexController', 'index_list']);
 
 Route::get('/animals/{animalId}/detail', ['App\Http\Controllers\AnimalController', 'show'])->whereNumber('animalId')->name('animals.detail');
 Route::get('/animals/search/{animal_name}', [AnimalController::class, 'search']);
