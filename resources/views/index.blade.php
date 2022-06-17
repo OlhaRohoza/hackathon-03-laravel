@@ -10,8 +10,8 @@
     <h1>Welcome to our vetclinic!</h1>
 
     <h2>Search for an owner or a pet</h2>
-    {{-- have to add route for action!!! --}}
-    <form action="{{route('owner.search')}}" method="post">
+ 
+    <form action="{{route('owner.search', 'surname')}}" method="get">
         @csrf
 
         <label for='owner_surname'> Search for an owner</label>
