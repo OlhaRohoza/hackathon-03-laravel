@@ -1,6 +1,13 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-hackathon #3 Veterinary clinic client list
+## hackathon #3: Veterinary clinic client list
+
+### Code
+![](https://img.shields.io/badge/Code-JavaScript-blue)
+![](https://img.shields.io/badge/Code-CSS-blue)
+
+### Frameworks
+![](https://img.shields.io/badge/Frameworks-Laravel-yellow)
 
 - prepare a robust database structure and import the provided data into it
 - display the data in the database in a nice, usable way (search results page (= list of dogs or list of owners), detail of a single owner, detail of a single dog)
