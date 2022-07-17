@@ -3,7 +3,7 @@
 ## hackathon #3: Veterinary clinic client list
 
 ### Code
-![](https://img.shields.io/badge/Code-JavaScript-blue)
+![](https://img.shields.io/badge/Code-PHP-blue)
 ![](https://img.shields.io/badge/Code-CSS-blue)
 
 ### Frameworks
